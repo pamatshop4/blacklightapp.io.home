@@ -8,8 +8,6 @@ export default function Home() {
         alt="Coming Soon"
         width={1920}
         height={1080}
-        className="w-full h-auto block"
-        sizes="100vw"
         priority
       />
     </div>

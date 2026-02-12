@@ -1,8 +1,10 @@
 "use client";
 
+import axios from "axios";
 import Link from "next/link";
 import { useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { Controller, useFieldArray, useForm, useWatch } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
@@ -51,11 +53,34 @@ import {
   businessFormSchema,
   type BusinessFormValues,
 } from "@/lib/validations/business-form";
+import { toast } from "sonner";
 
 const FORM_ID = "business-profile-form";
 
+type JoinPayload = Omit<BusinessFormValues, "tags"> & {
+  tags: string[];
+  Not_USA: 0 | 1;
+};
+
 function toTenDigits(value: string): string {
   return value.replace(/\D/g, "").slice(0, 10);
+}
+
+function getSubmitErrorMessage(error: unknown): string {
+  if (axios.isAxiosError(error)) {
+    const responseData = error.response?.data;
+
+    if (responseData && typeof responseData === "object" && "error" in responseData) {
+      const errorMessage = responseData.error;
+      if (typeof errorMessage === "string" && errorMessage.length > 0) {
+        return errorMessage;
+      }
+    }
+
+    return error.message;
+  }
+
+  return "Failed to submit form. Please try again.";
 }
 
 export function BusinessProfileForm() {
@@ -90,6 +115,20 @@ export function BusinessProfileForm() {
     name: "additional_locations",
   });
 
+  const submitMutation = useMutation({
+    mutationFn: async (payload: JoinPayload) => {
+      const response = await axios.post<{ ok: boolean }>("/api/join", payload);
+      return response.data;
+    },
+    onSuccess: () => {
+      form.reset(businessFormDefaultValues);
+      toast.success("Form submitted successfully.");
+    },
+    onError: (error) => {
+      toast.error(getSubmitErrorMessage(error));
+    },
+  });
+
   useEffect(() => {
     if (!hasMultipleLocations) {
       replace([]);
@@ -106,9 +145,10 @@ export function BusinessProfileForm() {
       ...values,
       tags: parsedTags,
       Not_USA: values.is_usa_based ? 0 : 1,
-    };
+    } satisfies JoinPayload;
 
-    console.log("Join form payload:", payload);
+    submitMutation.reset();
+    submitMutation.mutate(payload);
   }
 
   return (
@@ -124,8 +164,10 @@ export function BusinessProfileForm() {
         <Form {...form}>
           <form
             id={FORM_ID}
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8 [&_input]:bg-white [&_input]:text-black [&_input]:text-lg [&_input]:px-4 [&_input]:py-2.5 [&_textarea]:bg-white [&_textarea]:text-black [&_textarea]:text-lg [&_textarea]:px-4 [&_textarea]:py-3 **:data-[slot=select-trigger]:bg-white **:data-[slot=select-trigger]:text-black **:data-[slot=select-trigger]:text-lg **:data-[slot=select-trigger]:px-4 **:data-[slot=select-trigger]:py-2.5"
+            onSubmit={form.handleSubmit(onSubmit, (errors) => {
+              toast.error(getSubmitErrorMessage(errors));
+            })}
+            className="space-y-8 [&_input]:bg-white [&_input]:text-black [&_input]:text-lg [&_input]:px-4 [&_input]:py-2.5 dark:[&_input]:bg-white dark:[&_input]:text-black [&_textarea]:bg-white [&_textarea]:text-black [&_textarea]:text-lg [&_textarea]:px-4 [&_textarea]:py-3 dark:[&_textarea]:bg-white dark:[&_textarea]:text-black **:data-[slot=select-trigger]:bg-white **:data-[slot=select-trigger]:text-black **:data-[slot=select-trigger]:text-lg **:data-[slot=select-trigger]:px-4 **:data-[slot=select-trigger]:py-2.5"
           >
             <section className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2">
@@ -151,7 +193,7 @@ export function BusinessProfileForm() {
                       <FormLabel className="text-lg">Main Business Category <span className="text-gray-300/80 text-base font-normal">(required)</span></FormLabel>
                       <Select value={field.value} onValueChange={field.onChange}>
                         <FormControl>
-                          <SelectTrigger className="w-full rounded-none bg-white text-black">
+                          <SelectTrigger className="w-full rounded-none bg-white text-black dark:bg-white dark:text-black">
                             <SelectValue />
                           </SelectTrigger>
                         </FormControl>
@@ -916,16 +958,8 @@ export function BusinessProfileForm() {
         </Form>
       </CardContent>
       <CardFooter className="justify-end gap-2">
-        <Button
-          type="button"
-          variant="ghost"
-          form={FORM_ID}
-          onClick={() => form.reset(businessFormDefaultValues)}
-        >
-          Reset
-        </Button>
-        <Button type="submit" form={FORM_ID}>
-          Submit
+        <Button type="submit" className="text-black hover:opacity-80 bg-white px-8 py-4 rounded-lg" form={FORM_ID} disabled={submitMutation.isPending}>
+          {submitMutation.isPending ? "Submitting..." : "Submit"}
         </Button>
       </CardFooter>
     </Card>
