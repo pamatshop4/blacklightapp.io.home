@@ -19,7 +19,34 @@ export const BUSINESS_CATEGORIES = [
   "Travel, Hospitality & Events",
 ] as const;
 
-const optionalUrlSchema = z.union([z.literal(""), z.string().url("Invalid URL")]);
+const FACEBOOK_REGEX = /^(https?:\/\/)?(www\.|m\.|mbasic\.)?facebook\.com(\/.*)?$/i;
+const INSTAGRAM_REGEX = /^(https?:\/\/)?(www\.)?instagram\.com(\/.*)?$/i;
+const LINKEDIN_REGEX = /^(https?:\/\/)?(www\.)?linkedin\.com(\/.*)?$/i;
+
+const optionalSocialUrl = (regex: RegExp, platform: string) =>
+  z.union([
+    z.literal(""),
+    z
+      .string()
+      .transform((s) => s.trim())
+      .refine((s) => s === "" || regex.test(s), `Enter a valid ${platform} URL (e.g. ${platform}.com/yourpage)`),
+  ]);
+
+const websiteSchema = z
+  .string()
+  .transform((s) => s.trim())
+  .refine(
+    (s) => {
+      const withProtocol = /^https?:\/\//i.test(s) ? s : `https://${s}`;
+      try {
+        const u = new URL(withProtocol);
+        return u.protocol === "http:" || u.protocol === "https:";
+      } catch {
+        return false;
+      }
+    },
+    "Enter a valid website URL (e.g. example.com or www.example.com)"
+  );
 
 const locationSchema = z.object({
   street: z.string().min(1, "Address line 1 is required"),
@@ -47,7 +74,7 @@ export const businessFormSchema = z
       .string()
       .min(1, "Products/services are required")
       .max(300, "Products/services must be 300 characters or fewer"),
-    website: z.string().url("Enter a valid website URL"),
+    website: websiteSchema,
     phone: z.string().regex(/^\d{10}$/, "Phone must be exactly 10 digits"),
     email: z.string().email("Enter a valid email address"),
     contact_first: z.string().min(1, "First name is required"),
@@ -67,9 +94,9 @@ export const businessFormSchema = z
     consent_marketing: z
       .boolean()
       .refine((value) => value, "Marketing consent is required"),
-    facebook: optionalUrlSchema,
-    instagram: optionalUrlSchema,
-    linkedin: optionalUrlSchema,
+    facebook: optionalSocialUrl(FACEBOOK_REGEX, "facebook"),
+    instagram: optionalSocialUrl(INSTAGRAM_REGEX, "instagram"),
+    linkedin: optionalSocialUrl(LINKEDIN_REGEX, "linkedin"),
     keywords: z
       .array(z.string().trim().min(1, "Keyword is required"))
       .min(1, "Add at least one keyword")
