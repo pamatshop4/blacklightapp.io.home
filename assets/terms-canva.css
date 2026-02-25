@@ -151,7 +151,7 @@ ol.alpha{ list-style: lower-alpha; }
   width: 100% !important;
   display: flex !important;
   align-items: center !important;
-  height: 110px !important;
+  height: 100px !important;
 }
 
 /* Remove the left block completely */
@@ -162,7 +162,6 @@ ol.alpha{ list-style: lower-alpha; }
   /* Match the column width */
   max-width: 980px !important;
   width: 100% !important;
-  outline: 2px solid lime !important;
 
   /* Center it like .card */
   margin: 0 auto !important;
