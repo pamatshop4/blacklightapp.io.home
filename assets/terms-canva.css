@@ -157,3 +157,45 @@ ol.alpha{ list-style: lower-alpha; }
   .topbar__leftcap{ width:76px; }
   .brand__logo{ height:34px; }
 }
+/* --- Pixel-perfect header alignment with the Terms column --- */
+
+/* Full-width purple bar */
+.topbar{
+  background: var(--bar-purple) !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  height: 110px !important;
+}
+
+/* Remove the left block completely */
+.topbar__leftcap{ display: none !important; }
+
+/* Make header inner behave EXACTLY like the content column */
+.topbar__inner{
+  /* Match the column width */
+  max-width: 980px !important;
+  width: 100% !important;
+
+  /* Center it like .card */
+  margin: 0 auto !important;
+
+  /* Match .page horizontal padding */
+  padding-left: 18px !important;
+  padding-right: 18px !important;
+
+  /* Force left alignment */
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+}
+
+/* Ensure the anchor isn't centering itself */
+.brand{ margin: 0 !important; }
+
+/* Logo size */
+.brand__logo{
+  height: 100px !important;
+  width: auto !important;
+  display: block !important;
+}
