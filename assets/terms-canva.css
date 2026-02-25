@@ -55,11 +55,7 @@ body{
   padding-right: 18px;
 }
 
-.brand{
-  display:inline-flex;
-  align-items:center;
-  text-decoration:none;
-}
+.brand{ margin-left: 0 !important; }
 
 .brand__logo{
   height:100px;                 /* BIGGER logo */
