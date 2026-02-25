@@ -35,7 +35,7 @@ body{
 .topbar{
   width: 100%;
   background: var(--bar-purple);
-  height: 90px;
+  height: 100px;
   display: flex;
   align-items: center;
 }
@@ -49,6 +49,7 @@ body{
   max-width: 980px;
   width: 100%;
   margin: 0 auto;
+  padding: 0 18px;              /* <-- ADD THIS */
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -61,7 +62,7 @@ body{
 .brand__logo{
   height: 100px;
   width: auto;
-  margin-left: -12px;   /* nudge left to compensate for SVG whitespace */
+  margin-left: 0;   /* nudge left to compensate for SVG whitespace */
 }
 
 /* Page layout */
