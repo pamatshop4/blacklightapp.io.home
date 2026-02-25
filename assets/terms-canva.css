@@ -33,36 +33,35 @@ body{
 
 /* Header (Canva look + bigger logo) */
 .topbar{
-  position:sticky;
-  top:0;
-  z-index:10;
-  height:90px;                 /* taller */
-  background:var(--bar-purple);
-  display:flex;
-  align-items:center;
+  width: 100%;
+  background: var(--bar-purple);
+  height: 110px;
+  display: flex;
+  align-items: center;
 }
 
 .topbar__leftcap{
-  width: 0 !important;                 /* effectively removes the block */
-  background: var(--bar-purple) !important;
+  display: none;
 }
 
 /* Make header content align with the main document width */
 .topbar__inner{
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 18px;
+  max-width: 980px;      /* same as .card */
+  margin: 0 auto;        /* center container */
+  padding: 0 18px;       /* same horizontal padding as .page */
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;   /* force left alignment */
+  justify-content: flex-start;   /* force LEFT alignment */
 }
 
-.brand{ margin-left: 0 !important; }
+.brand{
+  margin: 0;
+}
 
 .brand__logo{
-  height:100px;                 /* BIGGER logo */
-  width:auto;
-  display:block;
+  height: 100px;
+  width: auto;
 }
 
 /* Page layout */
