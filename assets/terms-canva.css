@@ -43,17 +43,16 @@ body{
 }
 
 .topbar__leftcap{
-  width:130px;                 /* stronger left block */
-  height:100%;
-  background:var(--bar-leftcap);
-  flex:0 0 auto;
+  width: 0 !important;                 /* effectively removes the block */
+  background: var(--bar-purple) !important;
 }
 
+/* Make header content align with the main document width */
 .topbar__inner{
-  width:100%;
-  padding:0 26px;
-  display:flex;
-  align-items:center;
+  max-width: 980px;
+  margin: 0 auto;
+  padding-left: 18px;   /* match .page left padding */
+  padding-right: 18px;
 }
 
 .brand{
