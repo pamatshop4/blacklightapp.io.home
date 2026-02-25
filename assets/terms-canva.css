@@ -36,7 +36,7 @@ body{
   position:sticky;
   top:0;
   z-index:10;
-  height:140px;                 /* taller */
+  height:90px;                 /* taller */
   background:var(--bar-purple);
   display:flex;
   align-items:center;
@@ -63,7 +63,7 @@ body{
 }
 
 .brand__logo{
-  height:120px;                 /* BIGGER logo */
+  height:80px;                 /* BIGGER logo */
   width:auto;
   display:block;
 }
