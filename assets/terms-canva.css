@@ -63,7 +63,7 @@ body{
 }
 
 .brand__logo{
-  height:80px;                 /* BIGGER logo */
+  height:100px;                 /* BIGGER logo */
   width:auto;
   display:block;
 }
