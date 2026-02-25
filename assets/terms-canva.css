@@ -63,7 +63,7 @@ body{
 }
 
 .brand__logo{
-  height:44px;                 /* BIGGER logo */
+  height:60px;                 /* BIGGER logo */
   width:auto;
   display:block;
 }
@@ -80,7 +80,7 @@ body{
 
 .title{
   margin:4px 0 6px;
-  font-size:30px;
+  font-size:24px;
   font-weight:800;
   letter-spacing:-0.2px;
 }
