@@ -45,23 +45,9 @@ body{
 }
 
 /* Make header content align with the main document width */
-.topbar__inner{
-  max-width: 980px;
-  width: calc(100% - 36px);   /* matches .page padding (18 + 18) */
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
 
 .brand{
   margin: 0;
-}
-
-.brand__logo{
-  height: 90px;
-  width: auto;
-  margin-left: -8px;   /* nudge left to compensate for SVG whitespace */
 }
 
 /* Page layout */
@@ -176,6 +162,7 @@ ol.alpha{ list-style: lower-alpha; }
   /* Match the column width */
   max-width: 980px !important;
   width: 100% !important;
+  outline: 2px solid lime !important;
 
   /* Center it like .card */
   margin: 0 auto !important;
