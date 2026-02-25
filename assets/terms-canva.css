@@ -35,7 +35,7 @@ body{
 .topbar{
   width: 100%;
   background: var(--bar-purple);
-  height: 100px;
+  height: 90px;
   display: flex;
   align-items: center;
 }
@@ -47,12 +47,12 @@ body{
 /* Make header content align with the main document width */
 .topbar__inner{
   max-width: 980px;
-  width: 100%;
+  width: calc(100% - 36px);   /* matches .page padding (18px + 18px) */
   margin: 0 auto;
-  padding: 0 18px;              /* <-- ADD THIS */
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  padding: 0;                 /* IMPORTANT: no extra padding */
 }
 
 .brand{
@@ -60,9 +60,9 @@ body{
 }
 
 .brand__logo{
-  height: 100px;
+  height: 90px;
   width: auto;
-  margin-left: -10px;   /* nudge left to compensate for SVG whitespace */
+  margin-left: 0;   /* nudge left to compensate for SVG whitespace */
 }
 
 /* Page layout */
