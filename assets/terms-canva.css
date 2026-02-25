@@ -62,6 +62,7 @@ body{
 .brand__logo{
   height: 100px;
   width: auto;
+  margin-left: -8px;   /* nudge left to compensate for SVG whitespace */
 }
 
 /* Page layout */
