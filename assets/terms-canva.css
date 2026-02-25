@@ -1,0 +1,163 @@
+:root{
+  --bg:#ffffff;
+  --text:#1f1f1f;
+  --muted:#666;
+  --border:#e7e7e7;
+
+  /* Canva-like header */
+  --bar-purple:#6a2c9e;
+  --bar-leftcap:#1d0c2b;
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.55;
+}
+
+/* Skip link (accessibility) */
+.skiplink{
+  position:absolute;
+  left:-999px; top:0;
+  background:#000; color:#fff;
+  padding:10px 12px;
+  z-index:9999;
+  border-radius:8px;
+}
+.skiplink:focus{left:12px; top:12px}
+
+/* Header (Canva look + bigger logo) */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:10;
+  height:72px;                 /* taller */
+  background:var(--bar-purple);
+  display:flex;
+  align-items:center;
+}
+
+.topbar__leftcap{
+  width:130px;                 /* stronger left block */
+  height:100%;
+  background:var(--bar-leftcap);
+  flex:0 0 auto;
+}
+
+.topbar__inner{
+  width:100%;
+  padding:0 26px;
+  display:flex;
+  align-items:center;
+}
+
+.brand{
+  display:inline-flex;
+  align-items:center;
+  text-decoration:none;
+}
+
+.brand__logo{
+  height:44px;                 /* BIGGER logo */
+  width:auto;
+  display:block;
+}
+
+/* Page layout */
+.page{ padding:28px 18px 70px; }
+
+.card{
+  max-width:980px;
+  margin:0 auto;
+}
+
+.dochead{ margin-bottom:18px; }
+
+.title{
+  margin:4px 0 6px;
+  font-size:30px;
+  font-weight:800;
+  letter-spacing:-0.2px;
+}
+
+.meta{
+  margin:0 0 16px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* --- IMPORTANT: Disable TOC styling so it doesn't appear like a feature --- */
+.toc{ display:none !important; }
+
+/* Content typography (long legal doc feel) */
+.content{
+  font-size:13px;
+}
+
+.content p{ margin:12px 0; }
+
+.content h2{
+  margin:22px 0 10px;
+  font-size:13px;
+  font-weight:800;
+}
+
+.content h3{
+  margin:16px 0 8px;
+  font-size:13px;
+  font-weight:800;
+}
+
+.content ul,
+.content ol{
+  margin:10px 0 12px 20px;
+  padding:0;
+}
+
+.content li{ margin:6px 0; }
+
+.content a{
+  color:#2b59c3;
+  text-decoration:underline;
+}
+
+ol.alpha{ list-style: lower-alpha; }
+
+.backtotop{
+  margin-top:22px;
+  padding-top:14px;
+  border-top:1px solid var(--border);
+}
+
+/* Footer */
+.footer{
+  border-top:1px solid var(--border);
+  padding:18px;
+}
+.footer__inner{
+  max-width:980px;
+  margin:0 auto;
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 720px){
+  .title{ font-size:26px; }
+  .topbar{ height:64px; }
+  .topbar__leftcap{ width:92px; }
+  .brand__logo{ height:38px; }
+  .page{ padding:22px 16px 60px; }
+}
+
+@media (max-width: 520px){
+  .title{ font-size:22px; }
+  .topbar{ height:58px; }
+  .topbar__leftcap{ width:76px; }
+  .brand__logo{ height:34px; }
+}
