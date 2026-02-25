@@ -51,8 +51,10 @@ body{
 .topbar__inner{
   max-width: 980px;
   margin: 0 auto;
-  padding-left: 18px;   /* match .page left padding */
-  padding-right: 18px;
+  padding: 0 18px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;   /* force left alignment */
 }
 
 .brand{ margin-left: 0 !important; }
