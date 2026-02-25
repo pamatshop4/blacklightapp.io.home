@@ -185,4 +185,5 @@ ol.alpha{ list-style: lower-alpha; }
   height: 100px !important;
   width: auto !important;
   display: block !important;
+  margin-left: -24px !important;
 }
