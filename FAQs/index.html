@@ -1,1 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ</title>
+  <meta name="description" content="Frequently Asked Questions" />
+  <link rel="stylesheet" href="../assets/legal-pages.css?v=4" />
 
+  <!-- FAQ-only styles (scoped so Terms/Privacy pages are unaffected) -->
+  <style>
+    /* Quick actions */
+    .faq-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:.6rem;
+      margin: .25rem 0 1rem 0;
+    }
+
+    .faq-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:.65rem .9rem;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight: 650;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+
+    .faq-btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.10); }
+    .faq-btn:focus-visible{ outline: 2px solid rgba(255,255,255,0.45); outline-offset: 2px; }
+
+    .faq-btn--ghost{ background: transparent; }
+
+    /* Search */
+    .faq-search{
+      display:block;
+      margin: 0 0 1rem 0;
+    }
+
+    .faq-search__label{
+      display:block;
+      font-weight: 650;
+      margin: 0 0 .4rem 0;
+      opacity: .9;
+    }
+
+    .faq-search__input{
+      width: 100%;
+      padding: .75rem .9rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.06);
+      color: inherit;
+    }
+
+    .faq-search__input::placeholder{ opacity: .6; }
+    .faq-search__input:focus-visible{ outline: 2px solid rgba(255,255,255,0.40); outline-offset: 2px; }
+
+    /* Accordion */
+    .faq { margin-top: 0.25rem; }
+
+    .faq details{
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 16px;
+      margin: 0 0 0.75rem 0;
+      background: rgba(255,255,255,0.04);
+      overflow: clip;
+    }
+
+    .faq summary{
+      list-style:none;
+      cursor:pointer;
+      padding: 1rem 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 1rem;
+    }
+
+    .faq summary::-webkit-details-marker{ display:none; }
+
+    .faq summary::after{
+      content:"▾";
+      opacity:0.7;
+      transition: transform .18s ease;
+      flex:none;
+    }
+
+    .faq details[open] summary::after{ transform: rotate(180deg); }
+
+    .faq .answer{
+      padding: 0 1rem 1.05rem 1rem;
+      max-width: 72ch;
+    }
+
+    .faq .answer p{ margin: .55rem 0; }
+
+    /* Reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce){
+      .faq-btn, .faq summary::after { transition: none; }
+      .faq-btn:hover { transform:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skiplink" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar__leftcap" aria-hidden="true"></div>
+
+  <div class="topbar__inner">
+    <a class="brand" href="/" aria-label="BlackLight Home">
+      <img class="brand__logo" src="../assets/blacklight-logo-white.svg" alt="BlackLight" />
+    </a>
+  </div>
+</header>
+
+<main class="page" id="main">
+  <article class="card">
+    <header class="dochead">
+      <h1 class="title">Frequently Asked Questions</h1>
+      <p class="meta"><em>Effective March 5, 2026</em></p>
+    </header>
+
+    <div class="content">
+
+      <!-- Quick actions -->
+      <div class="faq-actions" role="navigation" aria-label="FAQ quick actions">
+        <a class="faq-btn"
+           href="https://chromewebstore.google.com/detail/blacklight%C2%AE/bjphcdafdapbkjlcbnokpemapjpninmp"
+           target="_blank" rel="noopener">
+          Install for Chrome
+        </a>
+        <a class="faq-btn"
+           href="https://microsoftedge.microsoft.com/addons/detail/blacklight%C2%AE/dgdnjmphpijilnaeccfnmfahpkdpneeb"
+           target="_blank" rel="noopener">
+          Install for Edge
+        </a>
+        <a class="faq-btn faq-btn--ghost" href="mailto:ask@blacklightapp.io">
+          Email support
+        </a>
+      </div>
+
+      <!-- Search -->
+      <label class="faq-search">
+        <span class="faq-search__label">Search FAQs</span>
+        <input class="faq-search__input" id="faqSearch" type="search"
+               placeholder="Type a keyword (privacy, account, Chrome…)" />
+      </label>
+
+      <!-- Accordion -->
+      <div class="faq">
+
+        <details>
+          <summary>What is BlackLight?</summary>
+          <div class="answer">
+            <p>BlackLight&reg; is a discovery tool that helps you find Black-owned businesses while you search and shop online.</p>
+            <p>It works through a browser extension and companion web app that highlight Black-owned businesses directly within your search experience, making it easier to discover and support them.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How does it work?</summary>
+          <div class="answer">
+            <p>BlackLight&reg; helps you discover Black-owned businesses while you search and shop online.</p>
+            <p>On <strong>desktop</strong>, install the BlackLight browser extension from the
+              <a href="https://chromewebstore.google.com/detail/blacklight%C2%AE/bjphcdafdapbkjlcbnokpemapjpninmp" target="_blank" rel="noopener">Chrome Web Store</a>
+              or the
+              <a href="https://microsoftedge.microsoft.com/addons/detail/blacklight%C2%AE/dgdnjmphpijilnaeccfnmfahpkdpneeb" target="_blank" rel="noopener">Microsoft Edge Add-ons store</a>.
+              Search the web as you normally would. When Black-owned businesses match your search, BlackLight highlights them directly in your results so you can easily discover and support them.
+            </p>
+            <p>On <strong>mobile</strong>, simply visit
+              <a href="https://blacklightapp.io" target="_blank" rel="noopener">blacklightapp.io</a>
+              to explore the BlackLight web app on your phone and discover Black-owned businesses wherever you are.
+            </p>
+            <p>Our database of businesses is continually growing as we expand the number of Black-owned businesses you can discover while you search and shop online.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Isn’t there something like this already out there?</summary>
+          <div class="answer">
+            <p>There are directories and apps that list Black-owned businesses, but they usually require you to visit a separate site or remember to search within their platform.</p>
+            <p>BlackLight&reg; works differently. It integrates directly into the way you already search and shop online. When Black-owned businesses match your search, BlackLight displays them right below the search bar at the top of the page—even above paid results—so they’re easy to discover.</p>
+            <p>Instead of changing your habits, BlackLight lets you search the way you always do while making it simple to find and support Black-owned businesses.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Where do I get BlackLight&reg;?</summary>
+          <div class="answer">
+            <p>You can install the BlackLight browser extension from the
+              <a href="https://chromewebstore.google.com/detail/blacklight%C2%AE/bjphcdafdapbkjlcbnokpemapjpninmp" target="_blank" rel="noopener">Chrome Web Store</a>
+              or the
+              <a href="https://microsoftedge.microsoft.com/addons/detail/blacklight%C2%AE/dgdnjmphpijilnaeccfnmfahpkdpneeb" target="_blank" rel="noopener">Microsoft Edge Add-ons store</a>.
+            </p>
+            <p>If you're using a <strong>mobile device</strong>, simply visit
+              <a href="https://blacklightapp.io" target="_blank" rel="noopener">blacklightapp.io</a>
+              to explore the BlackLight web app and discover Black-owned businesses on your phone.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Which browsers does BlackLight work with?</summary>
+          <div class="answer">
+            <p>BlackLight&reg; currently works with <strong>Google Chrome</strong> and <strong>Microsoft Edge</strong> through their browser extension stores.</p>
+            <p>On <strong>mobile devices</strong>, you can visit
+              <a href="https://blacklightapp.io" target="_blank" rel="noopener">blacklightapp.io</a>
+              to use the BlackLight companion web app, which works on iPhones and other smartphones.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Do I need an account to use BlackLight?</summary>
+          <div class="answer">
+            <p>No. You can use the BlackLight&reg; browser extension without creating an account.</p>
+            <p>If you use the <strong>BlackLight web app</strong>, creating an account allows you to access additional features such as <strong>favorites</strong> and <strong>recent history</strong>. These features require a secure login so your preferences can be saved.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What about privacy?</summary>
+          <div class="answer">
+            <p>We take privacy seriously. The BlackLight browser extension does <strong>not require an account</strong> and does not collect personal information from your searches.</p>
+            <p>If you choose to create an account in the <strong>BlackLight web app</strong>, we collect basic information such as your <strong>name, email address, and password</strong> so you can use features like <strong>favorites</strong> and <strong>recent history</strong>.</p>
+            <p>We <strong>do not sell your personal information</strong>. Our Privacy Policy and Terms of Use follow applicable laws and industry best practices to protect your information.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Why should I shop Black-owned?</summary>
+          <div class="answer">
+            <p>Supporting Black-owned businesses helps expand economic opportunity and strengthen communities. Redirecting everyday spending toward these businesses helps entrepreneurs grow, creates jobs, and contributes to closing long-standing wealth gaps.</p>
+            <p>It’s also a great way to discover unique products, services, and innovative brands you might not encounter otherwise.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How are businesses added to BlackLight?</summary>
+          <div class="answer">
+            <p>Businesses in the BlackLight database are identified using information from <strong>publicly available sources</strong> such as government records, local business directories, and other online listings.</p>
+            <p>Our proprietary workflow collects and standardizes this information, uses AI to help categorize businesses, and checks for duplicate entries before adding or updating listings in the BlackLight database.</p>
+            <p>While we rely on credible data sources, BlackLight does not independently verify business ownership, as many public records allow ownership information to be self-reported.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How will this help my business?</summary>
+          <div class="answer">
+            <p>BlackLight&reg; makes it easier for people who want to support Black-owned businesses to discover yours while they search and shop online.</p>
+            <p>By being included in the BlackLight network, your business can gain visibility with consumers actively looking to support Black-owned brands, as well as organizations seeking diverse suppliers and partners.</p>
+            <p>If you’re a Black-owned business interested in being included, <a href="mailto:ask@blacklightapp.io">contact the BlackLight team for next steps</a>.</p>
+          </div>
+        </details>
+
+      </div>
+
+      <p><em>Updated March 5, 2026</em></p>
+
+      <p>If you still have questions, email us at <a href="mailto:ask@blacklightapp.io">ask@blacklightapp.io</a>.</p>
+
+    </div>
+  </article>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    © <span id="year"></span> BlackLight
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // FAQ search: filters questions by keyword
+  (function () {
+    const input = document.getElementById("faqSearch");
+    if (!input) return;
+
+    const items = Array.from(document.querySelectorAll(".faq details"));
+    input.addEventListener("input", () => {
+      const q = input.value.trim().toLowerCase();
+      items.forEach((d) => {
+        const text = d.innerText.toLowerCase();
+        d.style.display = text.includes(q) ? "" : "none";
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
