@@ -4,72 +4,25 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>FAQ</title>
-<meta name="description" content="FAQs" />
-<link rel="stylesheet" href="../assets/legal-pages.css?v=5" />
+<meta name="description" content="Frequently Asked Questions" />
+<link rel="stylesheet" href="../assets/legal-pages.css?v=4" />
 
 <style>
 
-/* Layout */
+/* Intro paragraph */
 
-.faq-layout{
-display:grid;
-grid-template-columns:260px 1fr;
-gap:30px;
-margin-top:20px;
-}
-
-@media(max-width:900px){
-.faq-layout{grid-template-columns:1fr;}
-}
-
-/* Sidebar */
-
-.faq-sidebar{
-position:sticky;
-top:20px;
-padding:20px;
-border-radius:16px;
-border:1px solid rgba(255,255,255,.15);
-background:rgba(255,255,255,.05);
-}
-
-@media(max-width:900px){
-.faq-sidebar{position:static;}
-}
-
-.faq-sidebar h2{
-font-size:18px;
-margin:0 0 10px 0;
-}
-
-.faq-sidebar p{
+.faq-intro{
 font-size:16px;
-line-height:1.5;
+line-height:1.7;
+margin:0 0 20px 0;
+opacity:.9;
+max-width:700px;
 }
 
-/* CTA Buttons */
+/* Main FAQ area */
 
-.cta-btn{
-display:block;
-text-align:center;
-font-weight:800;
-border-radius:999px;
-padding:12px 16px;
+.faq-main{
 margin-top:10px;
-text-decoration:none;
-border:1px solid rgba(255,255,255,.2);
-background:linear-gradient(135deg,#e2a9f1,#8c5cff);
-color:#0b0b10;
-}
-
-.cta-btn.secondary{
-background:rgba(255,255,255,.08);
-color:inherit;
-}
-
-.cta-btn.ghost{
-background:transparent;
-color:inherit;
 }
 
 /* Controls */
@@ -78,37 +31,60 @@ color:inherit;
 display:flex;
 gap:10px;
 margin:0 0 20px 0;
+flex-wrap:wrap;
 }
 
 .faq-chip{
 border:1px solid rgba(255,255,255,.35);
 background:rgba(255,255,255,.12);
-color:white;
+color:#fff;
 border-radius:999px;
 padding:10px 16px;
 font-weight:800;
+font-size:16px;
 cursor:pointer;
+}
+
+.faq-chip:hover{
+background:rgba(255,255,255,.16);
+}
+
+.faq-chip:focus-visible{
+outline:2px solid rgba(255,255,255,.45);
+outline-offset:2px;
 }
 
 /* Search */
 
 .faq-search{
-margin-bottom:16px;
+margin:0 0 18px 0;
 }
 
 .faq-search__label{
 display:block;
 font-weight:800;
-margin-bottom:6px;
+margin:0 0 8px 0;
+opacity:.95;
+font-size:16px;
 }
 
 .faq-search__input{
 width:100%;
-padding:12px;
-border-radius:12px;
+padding:14px 14px;
+border-radius:14px;
 border:1px solid rgba(255,255,255,.16);
 background:rgba(255,255,255,.06);
-font-size:14px;
+color:inherit;
+font-size:18px;
+}
+
+.faq-search__input::placeholder{
+opacity:.6;
+}
+
+.faq-search__input:focus-visible{
+outline:2px solid rgba(255,255,255,.40);
+outline-offset:2px;
 }
 
 /* Accordion */
@@ -116,20 +92,19 @@ font-size:14px;
 .faq details{
 border:1px solid rgba(255,255,255,.15);
 border-radius:16px;
-margin-bottom:14px;
+margin:0 0 16px 0;
 background:rgba(255,255,255,.05);
 }
-
-/* Question */
 
 .faq summary{
 cursor:pointer;
 font-size:18px !important;
-font-weight:800 !important;
-padding:18px 20px !important;
+font-weight:900 !important;
+line-height:1.3 !important;
+padding:24px 20px !important;
 display:flex;
 align-items:center;
-gap:12px;
+gap:16px;
 list-style:none;
 }
 
@@ -137,12 +112,10 @@ list-style:none;
 display:none;
 }
 
-/* Purple arrow */
-
 .faq summary::before{
 content:"▸";
 color:#c084fc;
-font-size:18px;
+font-size:26px;
 transition:transform .2s ease;
 }
 
@@ -150,11 +123,11 @@ transition:transform .2s ease;
 transform:rotate(90deg);
 }
 
-/* Answer */
+/* Answers */
 
 .faq .answer{
-font-size:15px !important;   /* larger answer text */
-line-height:1.7;
+font-size:15px !important;
+line-height:1.7 !important;
 padding:0 20px 22px 48px !important;
 max-height:0;
 overflow:hidden;
@@ -162,11 +135,26 @@ transition:max-height .25s ease;
 }
 
 .faq details[open] .answer{
-max-height:800px;
+max-height:1400px;
 }
 
 .faq .answer p{
-margin-top:10px;
+margin:14px 0 0 0;
+}
+
+/* Bottom contact */
+
+.faq-contact{
+margin-top:28px;
+font-size:16px;
+line-height:1.6;
+}
+
+/* Reduce motion */
+
+@media (prefers-reduced-motion: reduce){
+.faq summary::before{transition:none;}
+.faq .answer{transition:none;}
 }
 
 </style>
@@ -177,10 +165,9 @@ margin-top:10px;
 <a class="skiplink" href="#main">Skip to content</a>
 
 <header class="topbar">
-<div class="topbar__leftcap"></div>
-
+<div class="topbar__leftcap" aria-hidden="true"></div>
 <div class="topbar__inner">
-<a class="brand" href="/">
+<a class="brand" href="/" aria-label="BlackLight Home">
 <img class="brand__logo" src="../assets/blacklight-logo-white.svg" alt="BlackLight" />
 </a>
 </div>
@@ -193,40 +180,16 @@ margin-top:10px;
 <header class="dochead">
 <h1 class="title">Frequently Asked Questions</h1>
 <p class="meta"><em>Effective March 5, 2026</em></p>
+
+<p class="faq-intro">
+Find quick answers about how BlackLight works, where to get it, privacy, accounts, and how businesses are added.
+</p>
+
 </header>
 
 <div class="content">
 
-<div class="faq-layout">
-
-<!-- Sidebar -->
-
-<aside class="faq-sidebar">
-
-<h2>Get BlackLight</h2>
-
-<p>Install the extension or open the mobile web app.</p>
-
-<a class="cta-btn"
-href="https://chromewebstore.google.com/detail/blacklight%C2%AE/bjphcdafdapbkjlcbnokpemapjpninmp"
-target="_blank">Install for Chrome</a>
-
-<a class="cta-btn"
-href="https://microsoftedge.microsoft.com/addons/detail/blacklight%C2%AE/dgdnjmphpijilnaeccfnmfahpkdpneeb"
-target="_blank">Install for Edge</a>
-
-<a class="cta-btn secondary"
-href="https://blacklightapp.io"
-target="_blank">Open Mobile App</a>
-
-<a class="cta-btn ghost"
-href="mailto:ask@blacklightapp.io">Email Support</a>
-
-</aside>
-
-<!-- FAQ -->
-
-<section>
+<section class="faq-main">
 
 <div class="faq-controls">
 <button class="faq-chip" id="expandAll">Expand all</button>
@@ -244,15 +207,26 @@ href="mailto:ask@blacklightapp.io">Email Support</a>
 <summary>What is BlackLight?</summary>
 <div class="answer">
 <p>BlackLight® is a discovery tool that helps you find Black-owned businesses while you search and shop online.</p>
-<p>It works through a browser extension and companion web app that highlights Black-owned businesses directly within your search experience.</p>
+<p>It works through a browser extension and companion web app that highlight Black-owned businesses directly within your search experience.</p>
 </div>
 </details>
 
 <details>
 <summary>How does it work?</summary>
 <div class="answer">
-<p>Install the BlackLight browser extension and search normally. When Black-owned businesses match your search, BlackLight highlights them directly in your results.</p>
-<p>On mobile visit blacklightapp.io to use the companion web app.</p>
+
+<p>BlackLight® helps you discover Black-owned businesses while you search and shop online.</p>
+
+<p>On <strong>desktop</strong>, install the BlackLight browser extension from the
+<a href="https://chromewebstore.google.com/detail/blacklight%C2%AE/bjphcdafdapbkjlcbnokpemapjpninmp" target="_blank" rel="noopener">Chrome Web Store</a>
+or the
+<a href="https://microsoftedge.microsoft.com/addons/detail/blacklight%C2%AE/dgdnjmphpijilnaeccfnmfahpkdpneeb" target="_blank" rel="noopener">Microsoft Edge Add-ons store</a>.
+Search the web as you normally would. When Black-owned businesses match your search, BlackLight highlights them directly in your results.</p>
+
+<p>On <strong>mobile</strong>, simply visit
+<a href="https://blacklightapp.io" target="_blank" rel="noopener">blacklightapp.io</a>
+to explore the BlackLight web app.</p>
+
 </div>
 </details>
 
@@ -265,7 +239,24 @@ href="mailto:ask@blacklightapp.io">Email Support</a>
 </details>
 
 <details>
-<summary>Do I need an account to use BlackLight?</summary>
+<summary>Where do I get BlackLight?</summary>
+<div class="answer">
+<p>You can install the extension from the
+<a href="https://chromewebstore.google.com/detail/blacklight%C2%AE/bjphcdafdapbkjlcbnokpemapjpninmp" target="_blank" rel="noopener">Chrome Web Store</a>
+or the
+<a href="https://microsoftedge.microsoft.com/addons/detail/blacklight%C2%AE/dgdnjmphpijilnaeccfnmfahpkdpneeb" target="_blank" rel="noopener">Microsoft Edge Add-ons store</a>.</p>
+</div>
+</details>
+
+<details>
+<summary>Which browsers does BlackLight work with?</summary>
+<div class="answer">
+<p>BlackLight currently works with Chrome and Microsoft Edge.</p>
+</div>
+</details>
+
+<details>
+<summary>Do I need an account?</summary>
 <div class="answer">
 <p>No account is required for the browser extension.</p>
 <p>An account is optional for the web app if you want features like favorites and recent history.</p>
@@ -275,7 +266,7 @@ href="mailto:ask@blacklightapp.io">Email Support</a>
 <details>
 <summary>What about privacy?</summary>
 <div class="answer">
-<p>The browser extension does not require an account and does not collect personal information from your searches.</p>
+<p>The browser extension does not collect personal search information.</p>
 <p>We do not sell personal information.</p>
 </div>
 </details>
@@ -297,16 +288,19 @@ href="mailto:ask@blacklightapp.io">Email Support</a>
 <details>
 <summary>How will this help my business?</summary>
 <div class="answer">
-<p>BlackLight helps consumers who want to support Black-owned businesses discover yours while they search online.</p>
+<p>BlackLight helps consumers discover Black-owned businesses while they search online.</p>
 <p><a href="mailto:ask@blacklightapp.io">ask@blacklightapp.io</a></p>
 </div>
 </details>
 
 </div>
 
-</section>
+<p class="faq-contact">
+Still got questions? Email us at
+<a href="mailto:ask@blacklightapp.io">ask@blacklightapp.io</a>.
+</p>
 
-</div>
+</section>
 
 </div>
 
