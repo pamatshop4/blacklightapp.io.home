@@ -128,16 +128,21 @@ transform:rotate(90deg);
 .faq .answer{
 font-size:15px !important;
 line-height:1.7 !important;
-padding:4px 20px 16px 48px !important;   /* reduced top padding */
+padding:0 20px 0 48px !important;
 max-height:0;
 overflow:hidden;
-transition:max-height .25s ease;
+transition:max-height .25s ease, padding .25s ease;
+}
+
+.faq details[open] .answer{
+max-height:1400px;
+padding:4px 20px 16px 48px !important;
 }
   
 .faq details{
 border:1px solid rgba(255,255,255,.15);
 border-radius:16px;
-margin:0 0 8px 0;   /* tighter spacing */
+margin:0 0 8px 0;
 background:rgba(255,255,255,.05);
 }
 
